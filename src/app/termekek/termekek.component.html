@@ -1,0 +1,33 @@
+
+<table mat-table [dataSource]="termekek">
+    <ng-container matColumnDef="nev">
+        <th mat-header-cell *matHeaderCellDef> Név </th>
+        <td mat-cell *matCellDef="let termek"> {{termek.nev}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="leiras">
+        <th mat-header-cell *matHeaderCellDef> Leírás </th>
+        <td mat-cell *matCellDef="let termek"> {{termek.leiras}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ar">
+        <th mat-header-cell *matHeaderCellDef> Ár </th>
+        <td mat-cell *matCellDef="let termek"> {{termek.ar}}.-Ft </td>
+    </ng-container>
+
+    <ng-container matColumnDef="csokkentettar">
+        <th mat-header-cell *matHeaderCellDef> Csökkentett ár </th>
+        <td mat-cell *matCellDef="let termek"> {{termek.ar*(1-termek.kedvezmeny)}}.-Ft </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+</table>
+
+<!--
+    <div *ngFor="let termek of termekek">
+        <h2>{{termek.nev}}</h2>
+        <p>{{termek.leiras}}</p>
+        <b>{{termek.ar}}.- Ft</b>
+    </div>
+-->
