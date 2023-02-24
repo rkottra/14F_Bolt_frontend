@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TermekModel } from '../models/termek-model';
 import { TermekService } from '../services/termek.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { TermekComponent } from '../termek/termek.component';
 
 @Component({
   selector: 'app-termekek',
@@ -9,16 +14,27 @@ import { TermekService } from '../services/termek.service';
 })
 export class TermekekComponent implements OnInit {
 
-  public termekek : TermekModel[] = [];
-  public columnsToDisplay = ['nev', 'leiras', 'ar', 'csokkentettar'];
+  public columnsToDisplay = ['gombok', 'nev', 'kepUrl', 'leiras', 'ar', 'csokkentettar'];
+  public dataSource = new MatTableDataSource<TermekModel>();
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   
-  constructor(private backend:TermekService) { 
+  constructor(private backend:TermekService, public dialog: MatDialog) { 
     this.backend.getAllTermek().subscribe((data) => {
-        this.termekek = data;
+        this.dataSource.data = data;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
     })
   }
 
   ngOnInit(): void {
+  }
+
+  szerkeszt(termek:TermekModel) {
+    this.dialog.open(TermekComponent, {
+      data: termek
+    });
+
   }
 
 }

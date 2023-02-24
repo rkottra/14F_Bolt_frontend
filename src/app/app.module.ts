@@ -8,7 +8,12 @@ import { FooterComponent } from './footer/footer.component';
 import { TermekekComponent } from './termekek/termekek.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatDialogModule} from '@angular/material/dialog';
+import { TermekComponent } from './termek/termek.component';
+
 
 
 @NgModule({
@@ -16,14 +21,18 @@ import {MatTableModule} from '@angular/material/table';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    TermekekComponent
+    TermekekComponent,
+    TermekComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     MatTableModule,
-    BrowserAnimationsModule
+    MatPaginatorModule,
+    BrowserAnimationsModule,
+    MatSortModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
