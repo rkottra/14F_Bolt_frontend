@@ -13,7 +13,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import { TermekComponent } from './termek/termek.component';
-
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,11 +24,14 @@ import { TermekComponent } from './termek/termek.component';
     HeaderComponent,
     FooterComponent,
     TermekekComponent,
-    TermekComponent
+    TermekComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule,
     MatTableModule,
     MatPaginatorModule,

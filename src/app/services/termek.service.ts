@@ -13,8 +13,7 @@ export class TermekService {
   }
 
   getAllTermek():Observable<TermekModel[]> {
-    return this.http.get<TermekModel[]>
-                        ("http://localhost:8000/api/termek");
+    return this.http.get<TermekModel[]>("http://localhost:8000/api/termek");
   }
 
 }
