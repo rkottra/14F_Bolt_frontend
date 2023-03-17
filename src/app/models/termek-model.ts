@@ -1,7 +1,7 @@
 export interface TermekModel {
     id          : number;
     nev         : string;
-    kepurl      : string;
+    kepUrl      : string;
     leiras      : string;
     ar          : number;
     kedvezmeny  : number;

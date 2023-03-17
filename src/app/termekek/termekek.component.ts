@@ -7,6 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { TermekComponent } from '../termek/termek.component';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-termekek',
@@ -15,7 +16,8 @@ import { TermekComponent } from '../termek/termek.component';
 })
 export class TermekekComponent implements OnInit {
 
-  public columnsToDisplay = ['gombok', 'nev', 'kepUrl', 'leiras', 'ar', 'csokkentettar'];
+  public columnsToDisplay = ['gombok', 'nev', 'kepUrl',
+                             'leiras', 'ar', 'csokkentettar'];
   public dataSource = new MatTableDataSource<TermekModel>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
