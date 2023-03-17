@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TermekModel } from '../models/termek-model';
 import { TermekService } from '../services/termek.service';
+import { LoginService } from '../services/login.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -19,7 +20,10 @@ export class TermekekComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
-  constructor(private backend:TermekService, public dialog: MatDialog) { 
+  constructor(private backend:TermekService,
+              public loginbackend:LoginService,
+              public dialog: MatDialog)
+  { 
     this.backend.getAllTermek().subscribe((data) => {
         this.dataSource.data = data;
         this.dataSource.paginator = this.paginator;

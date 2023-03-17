@@ -30,7 +30,9 @@
     <ng-container matColumnDef="gombok">
         <th mat-header-cell *matHeaderCellDef> </th>
         <td mat-cell *matCellDef="let termek">
-            <input type="button" value="Szerkesztés" (click)="szerkeszt(termek)"/>
+            <input type="button" value="Szerkesztés" 
+                (click)="szerkeszt(termek)"
+                *ngIf="this.loginbackend.token != ''"/>
         </td>
     </ng-container>
 
