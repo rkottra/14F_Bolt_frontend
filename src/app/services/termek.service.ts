@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TermekService {
+  
 
   constructor(private http:HttpClient) {
 
@@ -14,6 +15,10 @@ export class TermekService {
 
   getAllTermek():Observable<TermekModel[]> {
     return this.http.get<TermekModel[]>("http://localhost:8000/api/termek");
+  }
+
+  updateTermek(termek: TermekModel):Observable<TermekModel> {
+    return this.http.put<TermekModel>("http://localhost:8000/api/termek/"+termek.id, termek);
   }
 
 }

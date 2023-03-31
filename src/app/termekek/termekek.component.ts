@@ -7,7 +7,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { TermekComponent } from '../termek/termek.component';
-import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-termekek',
@@ -26,11 +25,7 @@ export class TermekekComponent implements OnInit {
               public loginbackend:LoginService,
               public dialog: MatDialog)
   { 
-    this.backend.getAllTermek().subscribe((data) => {
-        this.dataSource.data = data;
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-    })
+    this.refresh();
   }
 
   ngOnInit(): void {
@@ -39,8 +34,17 @@ export class TermekekComponent implements OnInit {
   szerkeszt(termek:TermekModel) {
     this.dialog.open(TermekComponent, {
       data: termek
+    }).afterClosed().subscribe((data) =>{
+      this.refresh();
     });
 
+  }
+  refresh() {
+    this.backend.getAllTermek().subscribe((data) => {
+      this.dataSource.data = data;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+  })
   }
 
 }

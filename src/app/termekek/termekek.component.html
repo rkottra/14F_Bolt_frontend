@@ -30,9 +30,12 @@
     <ng-container matColumnDef="gombok">
         <th mat-header-cell *matHeaderCellDef> </th>
         <td mat-cell *matCellDef="let termek">
-            <input type="button" value="Szerkesztés" 
+            <button mat-mini-fab color="primary"
                 (click)="szerkeszt(termek)"
-                *ngIf="this.loginbackend.token != ''"/>
+                *ngIf="this.loginbackend.token != ''">
+            <mat-icon>edit_note</mat-icon>
+                
+            </button>
         </td>
     </ng-container>
 
